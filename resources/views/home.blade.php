@@ -18,5 +18,19 @@
     }
 </style>
 <body>
+<div>
 <button type="button" class="btn btn-primary btn-block mb-4" style="width: 30%"><a href="{{route('logout.google')}}" style="color: #1a202c">Log Out</a></button>
+
+    @if(isset($authMethod))
+    @if($authMethod === 'google')
+        <h2>Welcome, {{ $userEmail }} </h2>
+    @elseif($authMethod === 'manual')
+        <h2>Welcome, {{ Auth::user()->email }} </h2>
+    @elseif($authMethod === 'registration')
+        <h2>Welcome, {{$user['email']}}</h2>
+
+    @endif
+    @endif
+
+</div>
 </body>

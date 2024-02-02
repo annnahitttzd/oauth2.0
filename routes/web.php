@@ -15,6 +15,11 @@ use App\Http\Controllers\GoogleLoginController;
 Route::get('/', function (){
     return view('login');
 });
+Route::get('/register', function (){
+    return view('registration');
+})->name('register');
+Route::post('/signIn', [GoogleLoginController::class, 'signIn'])->name('signIn');
+Route::post('/registration', [GoogleLoginController::class, 'register'])->name('registration');
 Route::get('/login', [GoogleLoginController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/login/callback', [GoogleLoginController::class, 'handleGoogleCallback'])->name('login.google.callback');
 Route::get('/home', function (){
